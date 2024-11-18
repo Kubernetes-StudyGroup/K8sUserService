@@ -1,0 +1,43 @@
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-resource-backend
+  namespace: k8s-study-group
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+    - host: localhost
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: userService
+                port:
+                  number: 80
+          - path: /login
+            pathType: Prefix
+            backend:
+              service:
+                name: userService
+                port:
+                  number: 80
+
+          - path: /lists
+            pathType: Prefix
+            backend:
+              service:
+                name: toDoListService
+                port:
+                  number: 80
+
+          - path: /dashboard
+            pathType: Prefix
+            backend:
+              service:
+                name: dashboardService
+                port:
+                  number: 80

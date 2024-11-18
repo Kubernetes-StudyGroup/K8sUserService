@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .welcome-message {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .logout-button {
+            padding: 10px 20px;
+            background-color: #d9534f;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .logout-button:hover {
+            background-color: #c9302c;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="welcome-message">
+        <h1>Welcome to the Home Page</h1>
+        <p>Hello, <span id="username"></span>!</p>
+    </div>
+    <button class="logout-button" onclick="logout()">Logout</button>
+
+    <script>
+        // Get the username from localStorage
+        const username = localStorage.getItem("username");
+        if (username) {
+            document.getElementById("username").innerText = username;
+        } else {
+            window.location.href = "login.html"; // Redirect to login if not logged in
+        }
+
+        // Logout function to clear the username from localStorage
+        function logout() {
+            localStorage.removeItem("username");
+            window.location.href = "login.html"; // Redirect to login after logout
+        }
+    </script>
+</body>
+
+</html>
